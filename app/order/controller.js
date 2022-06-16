@@ -6,7 +6,8 @@ const {Types} = require('mongoose');
 
 const store = async(req, res, next) => {
     try {
-        let {delivery_fee, delivery_address} = req.body; 
+        let {delivery_fee, delivery_address} = req.body;
+        console.log(req.user._id) 
         let items = await CartItem.find({user:req.user._id}).populate('product');
         if(!items){
             return res.json({
@@ -63,8 +64,9 @@ const index = async (req, res, next) => {
 
         let{skip= 0, limit= 10} = req.query;
         let count = await Order.find({user: req.user._id}).countDocuments();
-
+        console.log(req.user._id)
         let orders = await Order.find({user: req.user._id})
+      
         .skip(parseInt(skip))
         .limit(parseInt(limit))
         .populate('order_items')

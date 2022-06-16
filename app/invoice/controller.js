@@ -31,6 +31,7 @@ const show = async(req, res, next) => {
     }
 }
 
+
 module.exports = {
-    show
+    show,
 }

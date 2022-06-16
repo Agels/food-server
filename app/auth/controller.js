@@ -56,7 +56,7 @@ const login = async(req, res, next) => {
 
         await User.findByIdAndUpdate(user._id, {$push:{token: signed}})
 
-        res.json({
+        return res.json({
             message:'Login Succesfully',
             user,
             token:signed
@@ -85,7 +85,7 @@ const logout = async(req, res, next) => {
 
 const me = (req, res, next) => {
     if(!req.user){
-        res.json({
+       return res.json({
             err:1,
             message:'You are not login or token expired'
         });
