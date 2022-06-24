@@ -18,7 +18,7 @@ const register = async(req, res, next) => {
     } catch(err) {
         if(err && err.name === 'ValidationError'){
             return res.json({
-                error:1,
+                error:true,
                 message:err.message,
                 fields: err.errors
             });
